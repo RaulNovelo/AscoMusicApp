@@ -10,7 +10,8 @@
       </div>
       <div class="media-content">
         <p class="title is-4">{{ profile.display_name }}</p>
-        <p class="subtitle is-6">{{ profile.email }}<small>{{ profile.country }}</small></p>
+        <p class="subtitle is-6">{{ profile.email }}</p>
+        <strong>{{ profile.country }}</strong>
       </div>
     </div>
     <div class="content">
