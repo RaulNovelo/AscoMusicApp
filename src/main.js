@@ -10,6 +10,8 @@ import store from './store'
 import blur from './directives/blur'
 import msToMm from './filters/ms-to-mm'
 
+console.log(process.env)
+
 Vue.use(FlagIcon)
 Vue.use(blur)
 Vue.use(msToMm)

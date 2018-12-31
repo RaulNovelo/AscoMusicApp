@@ -1,11 +1,7 @@
-/* eslint-disable */
-
-const dev = 'http://localhost:3000'
-const prod = 'https://adc-spotify-api.herokuapp.com'
+const dev = false
 
 const config = {
-  api: prod,
-  platzi: 'https://platzi-music-api.now.sh',
+  api: dev ? 'http://localhost:3000' : 'https://adc-spotify-api.herokuapp.com',
   spotify: 'https://api.spotify.com/v1'
 }
 
