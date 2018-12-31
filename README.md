@@ -1,4 +1,4 @@
-# my-app
+# AscoMusic App
 
 > A Vue.js project
 
