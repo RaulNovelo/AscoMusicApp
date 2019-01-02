@@ -21,7 +21,7 @@
       </div>
       <div>
         <p><small>{{ results > 0 ? searchMessage : '' }}</small></p>
-        <div class="buttons has-addons is-right">
+        <div class="buttons has-addons is-right" v-show="results > 0">
         <a class="button" @click="withImages = true, isList = false" :class="{'is-selected is-info': withImages}">
           <span class="icon is-small">
             <i class="fas fa-th"></i>
