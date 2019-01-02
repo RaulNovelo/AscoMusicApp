@@ -16,7 +16,6 @@ export default {
   created () {
     if (this.track.name) { return }
     trackService.getById(this.$route.query.id).then(res => {
-      console.log(res)
       this.$store.commit('track/setTrack', res)
     })
   },
