@@ -19,36 +19,48 @@
           </a>
         </p>
       </div>
-      <div class="content">
+      <div>
         <p><small>{{ results > 0 ? searchMessage : '' }}</small></p>
+        <div class="buttons has-addons is-right">
+        <a class="button" @click="withImages = true, isList = false" :class="{'is-selected is-info': withImages}">
+          <span class="icon is-small">
+            <i class="fas fa-th"></i>
+          </span>
+        </a>
+        <a class="button" @click="isList = true, withImages = false" :class="{'is-selected is-info': isList}">
+          <span class="icon is-small">
+            <i class="fas fa-list"></i>
+          </span>
+        </a>
+    </div>
       </div>
-      <div class="content has-text-centered" v-show="isLoading">
-        <span class="icon is-large">
-        <i class="fas fa-spinner fa-pulse fa-2x"></i>
-        </span>
-      </div>
-      <div class="columns" v-for="(t, i) in tracks" :key="i">
-        <div class="column is-one-quarters-mobile" v-for="(track, j) in t" :key="j">
-          <track-card v-blur="!!track.preview_url" :track="track"></track-card>
+        <div class="columns is-multiline">
+          <div class="column is-one-quarters" :class="{'is-12-desktop': isList}" v-for="(t, i) in tracks" :key="i">
+            <track-inline v-if="isList" v-blur="t.preview_url" :track="t"></track-inline>
+            <track-card v-else v-blur="t.preview_url" :track="t"></track-card >
+          </div>
         </div>
-      </div>
     </section>
 </template>
 
 <script>
 import trackService from '~/services/track'
 import TrackCard from '@/TrackCard'
+import TrackInline from '@/InlineTrack'
 export default {
   data () {
     return {
-      searchQuery: '',
+      searchQuery: 'dua',
+      isList: true,
+      withImages: false,
       isLoading: false,
       results: 0,
       tracks: []
     }
   },
   components: {
-    TrackCard
+    TrackCard,
+    TrackInline
   },
   computed: {
     searchMessage () {
@@ -65,14 +77,13 @@ export default {
       this.results = 0
       this.isLoading = true
       trackService.search(this.searchQuery).then(res => {
-        var result = res.tracks.items
-        for (let index = 0; index < result.length; index = index + 4) {
-          this.tracks.push(result.slice(index, index + 4))
-        }
-        this.searchQuery = ''
+        this.tracks = res.tracks.items
         this.results = res.tracks.total
         this.isLoading = false
-      }, e => console.log(e))
+      }, e => {
+        console.log(e)
+        this.$router.push('/login')
+      })
     }
   }
 }

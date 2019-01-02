@@ -17,8 +17,9 @@
       <div class="navbar-start"></div>
       <div class="navbar-end">
         <router-link tag="a" to="/" class="navbar-item">Home</router-link>
-        <a class="navbar-item">About</a>
          <router-link tag="a" v-show="$route.name != 'Login'" to="/profile" class="navbar-item">Profile</router-link>
+       <!--
+        <a class="navbar-item">About</a>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">Language</a>
           <div class="navbar-dropdown is-active">
@@ -35,7 +36,7 @@
               <span>EN</span>
             </a>
           </div>
-        </div>
+        </div>-->
         <div class="navbar-item">
           <div class="buttons">
             <a class="button is-danger" v-if="$route.name != 'Login'" @click="logout">Logout</a>

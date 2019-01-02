@@ -41,6 +41,7 @@ export default {
   },
   mounted () {
     api.getUserInfo().then(res => {
+      console.log(res)
       this.$store.commit('user/setProfile', res)
     })
   }
