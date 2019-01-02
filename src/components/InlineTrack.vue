@@ -13,7 +13,7 @@
             <p class="subtitle is-6">{{ track.duration_ms | ms-to-mm }}</p>
         </div>
       <div>
-        <a id="play" @click="$store.commit('track/setTrack', track)" class="card-footer-item button is-success is-inverted">
+        <a id="play" @click="selectTrack" class="card-footer-item button is-success is-inverted">
           <span class="icon">
             <i class="fa fa-play"></i>
           </span>
@@ -26,17 +26,13 @@
 </template>
 
 <script>
+import trackMixin from '~/mixins/track'
 export default {
+  mixins: [trackMixin],
   props: {
     track: {
       type: Object,
       required: true
-    }
-  },
-  methods: {
-    toTrack () {
-      this.$store.commit('track/setTrack', this.track)
-      this.$router.push({ name: 'Track', query: { id: this.track.id } })
     }
   }
 }
