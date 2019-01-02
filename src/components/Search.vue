@@ -50,7 +50,7 @@ import TrackInline from '@/InlineTrack'
 export default {
   data () {
     return {
-      searchQuery: 'dua',
+      searchQuery: '',
       isList: true,
       withImages: false,
       isLoading: false,
