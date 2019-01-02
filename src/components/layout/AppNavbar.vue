@@ -16,8 +16,8 @@
     <div class="navbar-menu" id="navbarBasicExample" :class="{'is-active': isActive}">
       <div class="navbar-start"></div>
       <div class="navbar-end">
-        <router-link tag="a" to="/" class="navbar-item">Home</router-link>
-         <router-link tag="a" v-show="$route.name != 'Login'" to="/profile" class="navbar-item">Profile</router-link>
+        <router-link tag="a" to="/" class="navbar-item" :class="{'is-active': $route.name == 'Home'}">Home</router-link>
+         <router-link tag="a" v-show="$route.name != 'Login'" to="/profile" class="navbar-item" :class="{'is-active': $route.name == 'Profile'}">Profile</router-link>
        <!--
         <a class="navbar-item">About</a>
         <div class="navbar-item has-dropdown is-hoverable">
