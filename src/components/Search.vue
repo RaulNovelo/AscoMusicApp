@@ -80,8 +80,10 @@ export default {
         this.tracks = res.tracks.items
         this.results = res.tracks.total
         this.isLoading = false
+        this.searchQuery = ''
       }, e => {
         console.log(e)
+        this.isLoading = false
         this.$router.push('/login')
       })
     }

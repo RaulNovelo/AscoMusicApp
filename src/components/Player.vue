@@ -1,5 +1,5 @@
 <template>
-  <div class="content" v-if="track &amp;&amp; track.album">
+  <div class="content" v-if="track &amp;&amp; track.album &amp;&amp; track.preview_url">
     <p class="is-128x128"><img :src="track.album.images[0].url" /></p>
     <p><strong>{{ track.name }} - {{ track.artists[0].name }}</strong>
     <br>
